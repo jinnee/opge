@@ -33,7 +33,6 @@ private:
     TextButton* btnGoGame;
     Button* btnAboutGame;
     Button* btnExitGame;
-    TextButton* btnTextButton;
     Game15* mGame15;
 };
 

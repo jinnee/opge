@@ -23,16 +23,6 @@ void FifteenGame::init() {
 
     addSprite(cursor);
 
-    btnTextButton = new TextButton(appRender);
-//    btnTextButton->setTilesXY(1,2);
-//    btnTextButton->setImage(Constants::RESOURCE_DIR + Constants::pathSeparator + "Game15Buttons80.png", appRender);
-//    btnTextButton->setName("btnTextButton");
-//    btnTextButton->setX(10);
-//    btnTextButton->setY(10);
-//    btnTextButton->setText("Към играта");
-//    addSprite(btnTextButton);
-
-
     btnExitGame = new Button();
     btnExitGame->setTilesXY(1,2);
     btnExitGame->setImage(Constants::RESOURCE_DIR + Constants::pathSeparator + "exitGame.png", appRender);
@@ -58,13 +48,6 @@ void FifteenGame::init() {
     btnGoGame->setY(exitBtnBottom - 2*btnGoGame->getSpriteHeight() - 30);
     btnGoGame->setText("Към играта");
     addSprite(btnGoGame);
-//    btnGoGame = new Button();
-//    btnGoGame->setTilesXY(1,2);
-//    btnGoGame->setImage(Constants::RESOURCE_DIR + Constants::pathSeparator + "goGame.png", appRender);
-//    btnGoGame->setName("btnGoGame");
-//    btnGoGame->setX((getWidth() - btnGoGame->getSpriteWidth())/2);
-//    btnGoGame->setY(exitBtnBottom - 2*btnGoGame->getSpriteHeight() - 30);
-//    addSprite(btnGoGame);
 
     ttff = new TtfFont();
     ttff->setSize(70);
@@ -153,9 +136,6 @@ FifteenGame::~FifteenGame() {
 
     delete title;
     title = 0;
-
-    delete btnTextButton;
-    btnTextButton = 0;
 }
 
 void FifteenGame::onKeyUp(Sint16 key){

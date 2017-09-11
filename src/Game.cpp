@@ -162,7 +162,6 @@ void Game::g_events() {
                             break;
                      }
                     break;
-                // Изход при затваряне на прозореца
                 case SDL_QUIT:
                     done = true;
                     break;
@@ -177,10 +176,8 @@ void Game::g_events() {
                 }
                 case SDL_KEYDOWN:
                 {
-                    //регистрира клавиатурно събитие
+                    //register key event
                     vectorOfSprites[i]->setKeyReleased(true);
-                    //ако е избран с мишката спрайта, то реагира на клавишите
-                    //може да се манипулира !!!!!!!!!!!!!
                     int key = event.key.keysym.sym;
                     multiKeysCombination.insert(key);
 
@@ -224,7 +221,6 @@ void Game::g_events() {
                             }
                         }
 
-
                         switch(event.key.keysym.sym){
                             case SDLK_ESCAPE:
                                 done = true;
@@ -238,16 +234,15 @@ void Game::g_events() {
                 }
                 default:
                     break;
-            } // край на switch
-        } // край на for
+            } // end switch
+        } // end for
 
-        // ако нямаме въведени спрайтове
         if (vectorOfSpritesSize == 0) {
             if (event.type == SDL_QUIT) {
                 done = true;
             }
         }
-    } // край на обработка на съобщенията
+    } // end while(SDL_PollEvent(&event))
 }
 
 void Game::g_update() {
