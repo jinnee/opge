@@ -5,23 +5,12 @@ TextButton::TextButton(SDL_Renderer* appRender) : Button() {
     text = "Text";
     type = Constants::SpriteTypes::TEXT_BUTTON;
     this->appRender = appRender;
-
-    font = new TtfFont();
-    font->setSize(24);
-    font->setPath(Constants::RESOURCE_DIR + Constants::pathSeparator + "Karina.ttf");
-    if(!font->loadFont()) {
-        cout << "Cannot load ttf font." << endl;
-    }
-    font->setStyle(TTF_STYLE_BOLD);
+    this->font = nullptr;
 
     label = new UILabel();
-
-
 }
 
 TextButton::~TextButton() {
-    delete font;
-    font = 0;
     delete label;
     label = 0;
 }
@@ -31,16 +20,24 @@ void TextButton::render() {
     label->render();
 }
 
-void TextButton::setText(string text) {
-    this->text = text;
-    label->setTextColor(textColor);
-    label->setName("label_TextButton_" + GenerateFunctions::uuid());
-    label->setSkipMouseEventFrom(true);
-    label->setRenderer(appRender);
-    // TODO offsets
-    label->setX(this->position.x + 13);
-    label->setY(this->position.y+7);
-    label->setText(this->text);
-    label->setFont(font);
-    SpriteManager::addSprite(label);
+void TextButton::setFont(TtfFont *font) {
+    this->font = font;
+}
+
+void TextButton::setText(string text, int xoff, int yoff) {
+    if (this->font != nullptr) {
+        this->text = text;
+        label->setTextColor(textColor);
+        label->setName("label_TextButton_" + GenerateFunctions::uuid());
+        label->setSkipMouseEventFrom(true);
+        label->setRenderer(appRender);
+        // TODO offsets
+        int xx,yy;
+        TTF_SizeText(font->getFont(), text.c_str(), &xx,&yy);
+        label->setX(this->position.x + (this->w - xx)/2 + xoff);
+        label->setY(this->position.y + (this->h/tilesY - yy)/2 +yoff);
+        label->setText(this->text);
+        label->setFont(font);
+        SpriteManager::addSprite(label);
+    }
 }

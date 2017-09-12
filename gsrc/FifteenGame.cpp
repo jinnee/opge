@@ -8,6 +8,15 @@ void FifteenGame::init() {
     this->setIcon(Constants::RESOURCE_DIR + Constants::pathSeparator + "icon.png");
     gameSettings = new GameSettings("test.xml");
 
+    mainMenuFont = new TtfFont();
+    mainMenuFont->setSize(20);
+    mainMenuFont->setPath(Constants::RESOURCE_DIR + Constants::pathSeparator + "Karina.ttf");
+    if(!mainMenuFont->loadFont()) {
+        cout << "Cannot load ttf font." << endl;
+    }
+    mainMenuFont->setStyle(TTF_STYLE_BOLD);
+
+
     gameSettings->putValue("key","val");
 
     background = new Background();
@@ -41,12 +50,13 @@ void FifteenGame::init() {
     addSprite(btnAboutGame);
 
     btnGoGame = new TextButton(appRender);
+    btnGoGame->setFont(mainMenuFont);
     btnGoGame->setTilesXY(1,2);
     btnGoGame->setImage(Constants::RESOURCE_DIR + Constants::pathSeparator + "Game15Buttons80.png", appRender);
     btnGoGame->setName("btnGoGame");
     btnGoGame->setX((getWidth() - btnGoGame->getSpriteWidth())/2);
     btnGoGame->setY(exitBtnBottom - 2*btnGoGame->getSpriteHeight() - 30);
-    btnGoGame->setText("Към играта");
+    btnGoGame->setText("Play game");
     addSprite(btnGoGame);
 
     ttff = new TtfFont();
@@ -68,7 +78,7 @@ void FifteenGame::init() {
     title->setRenderer(appRender);
     title->setX(170);
     title->setY(190);
-    title->setText("Игра");
+    title->setText("Game");
     title->setFont(ttff);
     addSprite(title);
 }
@@ -87,7 +97,6 @@ void FifteenGame::render() {
         }
         background->render();
         title->render();
-//        btnTextButton->render();
         btnGoGame->render();
         btnAboutGame->render();
         btnExitGame->render();
@@ -132,6 +141,11 @@ FifteenGame::~FifteenGame() {
     delete btnAboutGame;
     btnAboutGame = 0;
 
+    mainMenuFont->close();
+    delete mainMenuFont;
+    mainMenuFont = 0;
+
+    ttff->close();
     delete ttff;
     ttff = 0;
 

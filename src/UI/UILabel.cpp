@@ -38,5 +38,4 @@ void UILabel::setTextColor(SDL_Color textColor){
 }
 
 UILabel::~UILabel(){
-
 }

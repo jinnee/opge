@@ -11,7 +11,8 @@ public:
     TextButton(SDL_Renderer* appRender);
     virtual ~TextButton();
     void render();
-    void setText(string);
+    void setText(string, int xoff = 0, int yoff = 0);
+    void setFont(TtfFont *font);
 private:
     TtfFont* font;
     string text;

@@ -28,6 +28,7 @@ private:
     Cursor* cursor;
     UILabel* title;
     TtfFont* ttff;
+    TtfFont* mainMenuFont;
     AnimatedSprite* goldenBird;
 
     TextButton* btnGoGame;
