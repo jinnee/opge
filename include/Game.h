@@ -42,12 +42,14 @@ class Game : public SpriteManager, public AbstractGame, public MouseEvents, publ
         SdlApplication *mSdlApplication;
         int mouse_x, mouse_y;
         int old_mouse_x, old_mouse_y;
-        bool isCursorInWindow;
         Constants::KeyState mKeyState;
 
         void g_events();
         void g_update();
         void g_render();
+protected:
+        bool isCursorInWindow;
+
 };
 
 #endif // GAME_H

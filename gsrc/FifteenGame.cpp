@@ -106,7 +106,8 @@ void FifteenGame::render() {
         mGame15->render();
     }
 
-    cursor->StaticSprite::render();
+    if(isCursorInWindow)
+        cursor->StaticSprite::render();
 }
 
 void FifteenGame::freeResources() {
