@@ -57,8 +57,9 @@ namespace ConvertFunctions
 namespace GenerateFunctions {
     string uuid()
     {
-        string result;
-        srand(time(NULL));
+        int static call = 1;
+
+        srand (time(NULL)+ call++);
         // https://stackoverflow.com/questions/2174768/generating-random-uuids-in-linux
         std::ostringstream stringStream;
         stringStream << rand() << rand() << "-";

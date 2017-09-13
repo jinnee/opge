@@ -32,8 +32,8 @@ private:
     AnimatedSprite* goldenBird;
 
     TextButton* btnGoGame;
-    Button* btnAboutGame;
-    Button* btnExitGame;
+    TextButton* btnAboutGame;
+    TextButton* btnExitGame;
     Game15* mGame15;
 };
 

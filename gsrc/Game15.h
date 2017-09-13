@@ -1,11 +1,11 @@
 #ifndef GAME15_H
 #define GAME15_H
 
-#include "../include/SpriteManager.h"
-#include "../include/AbstractGame.h"
-#include "../include/AnimatedSprite.h"
-#include "include/UI/Button.h"
-#include "../include/Background.h"
+#include "include/SpriteManager.h"
+#include "include/AbstractGame.h"
+#include "include/AnimatedSprite.h"
+#include "include/UI/TextButton.h"
+#include "include/Background.h"
 #include "GameState.h"
 #include "Numbers.h"
 
@@ -22,9 +22,9 @@ public:
     virtual ~Game15();
     void onMouseDown(Sint16 x, Sint16 y, AbstractSprite* as);
 private:
-    Button* btnToMainMenu;
-    Button* btnNewGame;
-    Button* btnRestartGame;
+    TextButton* btnToMainMenu;
+    TextButton* btnNewGame;
+    TextButton* btnRestartGame;
     Background* mBackground;
     SDL_Surface* screen;
     SDL_Renderer* appRender;
@@ -33,9 +33,7 @@ private:
     int buttonsHeight;
     int buttonsDistance;
     Numbers* mNumbers;
-    //Nums* mNums;
-    AnimatedSprite* gold;
-    AnimatedSprite* gold1;
+    TtfFont* gameFont;
 };
 
 

@@ -8,28 +8,52 @@ Game15::Game15() {
 }
 
 void Game15::init() {
-    btnNewGame = new Button();
+    gameFont = new TtfFont();
+    gameFont->setSize(20);
+    gameFont->setPath(Constants::RESOURCE_DIR + Constants::pathSeparator + "Karina.ttf");
+    if(!gameFont->loadFont()) {
+        cout << "Cannot load ttf font." << endl;
+    }
+
+//    btnNewGame = new Button();
+//    btnNewGame->setX(buttonsLeftMargin);
+//    btnNewGame->setY(buttonsTopMenu);
+//    btnNewGame->setTilesXY(1,2);
+//    btnNewGame->setImage(Constants::RESOURCE_DIR + Constants::pathSeparator + "newGame.png", this->appRender);
+//    btnNewGame->setName("btnNewGame");
+//    SpriteManager::addSprite(btnNewGame);
+    btnNewGame = new TextButton(appRender);
+    btnNewGame->setFont(gameFont);
+    btnNewGame->setTilesXY(1,2);
+    btnNewGame->setImage(Constants::RESOURCE_DIR + Constants::pathSeparator + "15btn.png", appRender);
+    btnNewGame->setName("btnNewGame");
     btnNewGame->setX(buttonsLeftMargin);
     btnNewGame->setY(buttonsTopMenu);
-    btnNewGame->setTilesXY(1,2);
-    btnNewGame->setImage(Constants::RESOURCE_DIR + Constants::pathSeparator + "newGame.png", this->appRender);
-    btnNewGame->setName("btnNewGame");
+    btnNewGame->setTextColor({ 255, 255, 255 });
+    btnNewGame->setText("New game");
     SpriteManager::addSprite(btnNewGame);
 
-    btnRestartGame = new Button();
+    btnRestartGame = new TextButton(appRender);
+    btnRestartGame->setFont(gameFont);
+    btnRestartGame->setTilesXY(1,2);
+    btnRestartGame->setImage(Constants::RESOURCE_DIR + Constants::pathSeparator + "15btn.png", appRender);
+    btnRestartGame->setName("btnRestartGame");
     btnRestartGame->setX(buttonsLeftMargin);
     btnRestartGame->setY(buttonsTopMenu+buttonsHeight+buttonsDistance);
-    btnRestartGame->setTilesXY(1,2);
-    btnRestartGame->setImage(Constants::RESOURCE_DIR + Constants::pathSeparator + "restart.png", this->appRender);
-    btnRestartGame->setName("btnRestartGame");
+    btnRestartGame->setTextColor({ 255, 255, 255 });
+    btnRestartGame->setText("Restart");
     SpriteManager::addSprite(btnRestartGame);
 
-    btnToMainMenu = new Button();
+
+    btnToMainMenu = new TextButton(appRender);
+    btnToMainMenu->setFont(gameFont);
+    btnToMainMenu->setTilesXY(1,2);
+    btnToMainMenu->setImage(Constants::RESOURCE_DIR + Constants::pathSeparator + "15btn.png", appRender);
+    btnToMainMenu->setName("btnToMainMenu");
     btnToMainMenu->setX(buttonsLeftMargin);
     btnToMainMenu->setY(buttonsTopMenu+2*buttonsHeight+buttonsDistance*2);
-    btnToMainMenu->setTilesXY(1,2);
-    btnToMainMenu->setImage(Constants::RESOURCE_DIR + Constants::pathSeparator + "toMainMenu.png", this->appRender);
-    btnToMainMenu->setName("btnToMainMenu");
+    btnToMainMenu->setTextColor({ 255, 255, 255 });
+    btnToMainMenu->setText("To menu");
     SpriteManager::addSprite(btnToMainMenu);
 
     mBackground = new Background();
@@ -60,9 +84,6 @@ void Game15::render() {
             GameState::inGame = 0;
 
             SpriteManager::deleteSprite("background_board");
-            SpriteManager::deleteSprite("btnToMainMenu");
-            SpriteManager::deleteSprite("btnNewGame");
-            SpriteManager::deleteSprite("btnRestartGame");
         } else if (btnNewGame->isMouseButtonDown(Constants::MessageTypes::MOUSE_LEFT_DOWN)) {
             mNumbers->newGame();
         } else if (btnRestartGame->isMouseButtonDown(Constants::MessageTypes::MOUSE_LEFT_DOWN)) {
@@ -81,14 +102,20 @@ void Game15::freeResources() {
 Game15::~Game15() {
     delete mBackground;
     mBackground = 0;
+
     delete btnToMainMenu;
     btnToMainMenu = 0;
     delete btnNewGame;
     btnNewGame = 0;
     delete btnRestartGame;
     btnRestartGame = 0;
+
     delete mNumbers;
     mNumbers = 0;
+
+    gameFont->close();
+    delete gameFont;
+    gameFont = 0;
 
     cout << "delete Game15" << endl;
 

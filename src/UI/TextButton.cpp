@@ -11,8 +11,10 @@ TextButton::TextButton(SDL_Renderer* appRender) : Button() {
 }
 
 TextButton::~TextButton() {
-    delete label;
-    label = 0;
+    if(label != nullptr) {
+        delete label;
+        label = 0;
+    }
 }
 
 void TextButton::render() {
@@ -22,6 +24,10 @@ void TextButton::render() {
 
 void TextButton::setFont(TtfFont *font) {
     this->font = font;
+}
+
+void TextButton::setTextColor(SDL_Color textColor){
+    this->textColor = textColor;
 }
 
 void TextButton::setText(string text, int xoff, int yoff) {

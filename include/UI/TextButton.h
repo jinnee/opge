@@ -13,6 +13,7 @@ public:
     void render();
     void setText(string, int xoff = 0, int yoff = 0);
     void setFont(TtfFont *font);
+    void setTextColor(SDL_Color textColor);
 private:
     TtfFont* font;
     string text;

@@ -32,21 +32,25 @@ void FifteenGame::init() {
 
     addSprite(cursor);
 
-    btnExitGame = new Button();
+    btnExitGame = new TextButton(appRender);
+    btnExitGame->setFont(mainMenuFont);
     btnExitGame->setTilesXY(1,2);
-    btnExitGame->setImage(Constants::RESOURCE_DIR + Constants::pathSeparator + "exitGame.png", appRender);
+    btnExitGame->setImage(Constants::RESOURCE_DIR + Constants::pathSeparator + "Game15Buttons80.png", appRender);
     btnExitGame->setName("btnExitGame");
     btnExitGame->setX((getWidth() - btnExitGame->getSpriteWidth())/2);
     int exitBtnBottom = getHeight() - btnExitGame->getSpriteHeight() - 25;
     btnExitGame->setY(exitBtnBottom);
+    btnExitGame->setText("Exit");
     addSprite(btnExitGame);
 
-    btnAboutGame = new Button();
+    btnAboutGame = new TextButton(appRender);
+    btnAboutGame->setFont(mainMenuFont);
     btnAboutGame->setTilesXY(1,2);
-    btnAboutGame->setImage(Constants::RESOURCE_DIR + Constants::pathSeparator + "aboutGame.png", appRender);
+    btnAboutGame->setImage(Constants::RESOURCE_DIR + Constants::pathSeparator + "Game15Buttons80.png", appRender);
     btnAboutGame->setName("btnAboutGame");
     btnAboutGame->setX((getWidth() - btnAboutGame->getSpriteWidth())/2);
     btnAboutGame->setY(exitBtnBottom - btnAboutGame->getSpriteHeight() - 15);
+    btnAboutGame->setText("About game");
     addSprite(btnAboutGame);
 
     btnGoGame = new TextButton(appRender);
