@@ -105,6 +105,18 @@ void FifteenGame::render() {
         btnAboutGame->render();
         btnExitGame->render();
 
+        if (btnGoGame->isCursorInSprite()
+                || btnAboutGame->isCursorInSprite()
+                || btnExitGame->isCursorInSprite()) {
+            cursor->changeCursorFromPath(Constants::RESOURCE_DIR + Constants::pathSeparator + "red_cursor.png", appRender);
+            cursor_flag = true;
+        } else {
+            if (cursor_flag) {
+                cursor->changeCursorFromPath(Constants::RESOURCE_DIR + Constants::pathSeparator + "blue_cursor.png", appRender);
+                cursor_flag = false;
+            }
+        }
+
         if ( btnGoGame ->isMouseButtonDown(Constants::MessageTypes::MOUSE_LEFT_DOWN)) {
             GameState::inGame = 1;
             mGame15 = new Game15();
