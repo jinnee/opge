@@ -30,7 +30,6 @@ private:
     TtfFont* ttff;
     TtfFont* mainMenuFont;
     AnimatedSprite* goldenBird;
-    bool cursor_flag;
 
     TextButton* btnGoGame;
     TextButton* btnAboutGame;

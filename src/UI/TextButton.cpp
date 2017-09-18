@@ -6,6 +6,7 @@ TextButton::TextButton(SDL_Renderer* appRender) : Button() {
     type = Constants::SpriteTypes::TEXT_BUTTON;
     this->appRender = appRender;
     this->font = nullptr;
+    cursor_flag = false;
 
     label = new UILabel();
 }
@@ -20,6 +21,16 @@ TextButton::~TextButton() {
 void TextButton::render() {
     Button::render();
     label->render();
+
+    if (this->isCursorInSprite()) {
+        Cursor::getCursor()->changeCursorFromPath(Constants::RESOURCE_DIR + Constants::pathSeparator + "red_cursor.png", appRender);
+        cursor_flag = true;
+    } else {
+        if (cursor_flag) {
+            Cursor::getCursor()->changeCursorFromPath(Constants::RESOURCE_DIR + Constants::pathSeparator + "blue_cursor.png", appRender);
+            cursor_flag = false;
+        }
+    }
 }
 
 void TextButton::setFont(TtfFont *font) {

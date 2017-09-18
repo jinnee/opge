@@ -4,6 +4,7 @@
 #include "Button.h"
 #include "include/TtfFont.h"
 #include "include/UI/UILabel.h"
+#include "include/Cursor.h"
 
 class TextButton : public Button
 {
@@ -20,6 +21,7 @@ private:
     UILabel* label;
     SDL_Color textColor;
     SDL_Renderer* appRender;
+    bool cursor_flag;
 };
 
 #endif // TEXTBUTTON_H

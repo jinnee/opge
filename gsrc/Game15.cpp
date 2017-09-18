@@ -15,13 +15,8 @@ void Game15::init() {
         cout << "Cannot load ttf font." << endl;
     }
 
-//    btnNewGame = new Button();
-//    btnNewGame->setX(buttonsLeftMargin);
-//    btnNewGame->setY(buttonsTopMenu);
-//    btnNewGame->setTilesXY(1,2);
-//    btnNewGame->setImage(Constants::RESOURCE_DIR + Constants::pathSeparator + "newGame.png", this->appRender);
-//    btnNewGame->setName("btnNewGame");
-//    SpriteManager::addSprite(btnNewGame);
+    Cursor::getCursor()->changeCursorFromPath(Constants::RESOURCE_DIR + Constants::pathSeparator + "blue_cursor.png", appRender);
+
     btnNewGame = new TextButton(appRender);
     btnNewGame->setFont(gameFont);
     btnNewGame->setTilesXY(1,2);
@@ -43,7 +38,6 @@ void Game15::init() {
     btnRestartGame->setTextColor({ 255, 255, 255 });
     btnRestartGame->setText("Restart");
     SpriteManager::addSprite(btnRestartGame);
-
 
     btnToMainMenu = new TextButton(appRender);
     btnToMainMenu->setFont(gameFont);
