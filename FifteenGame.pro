@@ -8,7 +8,7 @@ CONFIG += console
 CONFIG -= app_bundle
 
 TEMPLATE = app
-LIBS += -L/usr/lib -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -ltinyxml2
+LIBS += -L/usr/lib -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
 
 SOURCES += main.cpp \
     src/AbstractSprite.cpp \
@@ -34,12 +34,12 @@ SOURCES += main.cpp \
     src/UI/UILabel.cpp \
     src/UI/UIMessageBox.cpp \
     gsrc/FifteenGame.cpp \
-    src/GameSettings.cpp \
     vendors/tinyxml2.cpp \
     gsrc/GameState.cpp \
     gsrc/Game15.cpp \
     gsrc/Numbers.cpp \
-    src/UI/TextButton.cpp
+    src/UI/TextButton.cpp \
+    src/GameSettings.cpp
 
 HEADERS += \
     include/AbstractFont.h \
@@ -72,9 +72,10 @@ HEADERS += \
     include/UI/UILabel.h \
     include/UI/UIMessageBox.h \
     gsrc/FifteenGame.h \
-    include/GameSettings.h \
     vendors/tinyxml2.h \
     gsrc/GameState.h \
     gsrc/Game15.h \
     gsrc/Numbers.h \
-    include/UI/TextButton.h
+    include/UI/TextButton.h \
+    include/ImageInstruments.h \
+    include/GameSettings.h
